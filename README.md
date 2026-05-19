@@ -1,4 +1,4 @@
-# Malik Store
+# Malik Online Store
 
 A modern static online shopping website. It includes a responsive storefront, product filtering, search, sorting, wishlist, cart drawer, shipping progress, product detail modal, dark mode, and newsletter interaction.
 
