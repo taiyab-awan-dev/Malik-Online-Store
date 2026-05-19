@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A modern online shopping storefront with filters, cart, wishlist, and checkout preview."
+    />
+    <title>Aurum Market | Modern Online Shopping</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="announcement">
+      <span>Free express delivery over $120</span>
+      <span>New season edit now live</span>
+      <span>Easy 30 day returns</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Aurum Market home">
+        <span class="brand-mark">A</span>
+        <span>Aurum Market</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#shop">Shop</a>
+        <a href="#collections">Collections</a>
+        <a href="#deals">Deals</a>
+        <a href="#support">Support</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-box" for="site-search">
+          <i data-lucide="search"></i>
+          <input id="site-search" type="search" placeholder="Search products" autocomplete="off" />
+        </label>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="icon-button badge-button" id="wishlist-open" type="button" aria-label="Open wishlist">
+          <i data-lucide="heart"></i>
+          <span id="wishlist-count">0</span>
+        </button>
+        <button class="icon-button badge-button" id="cart-open" type="button" aria-label="Open cart">
+          <i data-lucide="shopping-bag"></i>
+          <span id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Featured collection">
+        <div class="hero-media"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Curated drops for city life</p>
+          <h1>Aurum Market</h1>
+          <p>
+            Premium fashion, tech, home, and wellness essentials selected for everyday momentum.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#shop">Shop new arrivals</a>
+            <a class="secondary-link" href="#collections">Explore collections</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Store benefits">
+        <div>
+          <strong>4.9/5</strong>
+          <span>Customer rating</span>
+        </div>
+        <div>
+          <strong>48 hr</strong>
+          <span>Average delivery</span>
+        </div>
+        <div>
+          <strong>2,400+</strong>
+          <span>Verified reviews</span>
+        </div>
+        <div>
+          <strong>Secure</strong>
+          <span>Checkout ready</span>
+        </div>
+      </section>
+
+      <section class="collections" id="collections" aria-label="Featured collections">
+        <div class="section-heading">
+          <p class="eyebrow">Collections</p>
+          <h2>Shop by lifestyle</h2>
+        </div>
+        <div class="collection-grid" id="collection-grid"></div>
+      </section>
+
+      <section class="shop-layout" id="shop">
+        <aside class="filters" aria-label="Product filters">
+          <div class="filter-header">
+            <h2>Filters</h2>
+            <button class="text-button" id="reset-filters" type="button">Reset</button>
+          </div>
+
+          <div class="filter-group">
+            <label for="category-filter">Category</label>
+            <select id="category-filter">
+              <option value="all">All categories</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Tech">Tech</option>
+              <option value="Home">Home</option>
+              <option value="Wellness">Wellness</option>
+              <option value="Travel">Travel</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="price-filter">Max price: <span id="price-value">$350</span></label>
+            <input id="price-filter" type="range" min="40" max="350" value="350" step="10" />
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Availability</span>
+            <label class="check-row">
+              <input id="stock-filter" type="checkbox" />
+              <span>In stock only</span>
+            </label>
+            <label class="check-row">
+              <input id="sale-filter" type="checkbox" />
+              <span>On sale</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Rating</span>
+            <div class="segmented" id="rating-filter" role="group" aria-label="Minimum rating">
+              <button type="button" data-rating="0" class="active">All</button>
+              <button type="button" data-rating="4">4+</button>
+              <button type="button" data-rating="4.5">4.5+</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="product-section" aria-label="Products">
+          <div class="section-toolbar">
+            <div>
+              <p class="eyebrow">Storefront</p>
+              <h2>New arrivals</h2>
+              <span id="result-count">0 products</span>
+            </div>
+            <div class="toolbar-controls">
+              <button class="filter-toggle" id="mobile-filter-open" type="button">
+                <i data-lucide="sliders-horizontal"></i>
+                Filters
+              </button>
+              <label for="sort-filter" class="sort-label">Sort</label>
+              <select id="sort-filter">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: low to high</option>
+                <option value="price-high">Price: high to low</option>
+                <option value="rating">Top rated</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="quick-categories" id="quick-categories" aria-label="Quick category filters"></div>
+          <div class="product-grid" id="product-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <i data-lucide="package-search"></i>
+            <h3>No products found</h3>
+            <p>Adjust filters or search for another item.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="deal-band" id="deals">
+        <div>
+          <p class="eyebrow">Limited edit</p>
+          <h2>Weekend cart bonus</h2>
+          <p>Spend $180 and get priority shipping plus a premium gift wrap upgrade.</p>
+        </div>
+        <a class="primary-button" href="#shop">Build your cart</a>
+      </section>
+
+      <section class="support-grid" id="support" aria-label="Support highlights">
+        <div>
+          <i data-lucide="shield-check"></i>
+          <h3>Protected payments</h3>
+          <p>Encrypted checkout flow with fraud monitoring and instant order confirmation.</p>
+        </div>
+        <div>
+          <i data-lucide="truck"></i>
+          <h3>Smart delivery</h3>
+          <p>Fast shipping options with clear delivery windows and live order updates.</p>
+        </div>
+        <div>
+          <i data-lucide="message-circle"></i>
+          <h3>Responsive support</h3>
+          <p>Order help, returns, and product guidance handled with careful follow-through.</p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="drawer" id="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Checkout</p>
+            <h2 id="cart-title">Your cart</h2>
+          </div>
+          <button class="icon-button drawer-close" type="button" aria-label="Close cart">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="drawer-items" id="cart-items"></div>
+        <div class="cart-summary">
+          <div class="shipping-meter">
+            <div>
+              <span>Free shipping</span>
+              <strong id="shipping-message">$120 away</strong>
+            </div>
+            <div class="meter-track">
+              <span id="shipping-progress"></span>
+            </div>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal">$0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Estimated tax</span>
+            <strong id="cart-tax">$0</strong>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <strong id="cart-total">$0</strong>
+          </div>
+          <button class="checkout-button" id="checkout-button" type="button">Checkout preview</button>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="drawer" id="wishlist-drawer" aria-label="Wishlist" aria-hidden="true">
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="wishlist-title">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Saved</p>
+            <h2 id="wishlist-title">Wishlist</h2>
+          </div>
+          <button class="icon-button drawer-close" type="button" aria-label="Close wishlist">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="drawer-items" id="wishlist-items"></div>
+      </div>
+    </aside>
+
+    <div class="modal-backdrop" id="product-modal" hidden>
+      <article class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="icon-button modal-close" id="modal-close" type="button" aria-label="Close product details">
+          <i data-lucide="x"></i>
+        </button>
+        <img id="modal-image" alt="" />
+        <div class="modal-copy">
+          <p class="eyebrow" id="modal-category"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-description"></p>
+          <div class="modal-meta">
+            <span id="modal-rating"></span>
+            <span id="modal-stock"></span>
+          </div>
+          <div class="modal-price" id="modal-price"></div>
+          <button class="primary-button" id="modal-add" type="button">Add to cart</button>
+        </div>
+      </article>
+    </div>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand" href="#" aria-label="Aurum Market home">
+          <span class="brand-mark">A</span>
+          <span>Aurum Market</span>
+        </a>
+        <p>Curated goods for modern daily life.</p>
+      </div>
+      <form class="newsletter">
+        <label for="newsletter-email">Newsletter</label>
+        <div>
+          <input id="newsletter-email" type="email" placeholder="Email address" />
+          <button type="submit">Join</button>
+        </div>
+      </form>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
