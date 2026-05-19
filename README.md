@@ -1,6 +1,6 @@
-# Aurum Market
+# Malik Store
 
-A modern static online shopping website ready for GitHub Pages. It includes a responsive storefront, product filtering, search, sorting, wishlist, cart drawer, shipping progress, product detail modal, dark mode, and newsletter interaction.
+A modern static online shopping website. It includes a responsive storefront, product filtering, search, sorting, wishlist, cart drawer, shipping progress, product detail modal, dark mode, and newsletter interaction.
 
 ## Files
 
