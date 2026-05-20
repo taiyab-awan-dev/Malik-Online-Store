@@ -20,15 +20,6 @@ python -m http.server 5500
 
 Then visit `http://localhost:5500`.
 
-## Upload To GitHub Pages
-
-1. Create a new GitHub repository.
-2. Upload `index.html`, `styles.css`, `script.js`, `.gitignore`, and this `README.md`.
-3. Go to `Settings` -> `Pages`.
-4. Set source to `Deploy from a branch`.
-5. Choose the `main` branch and `/root`.
-6. Save and wait for GitHub to publish the site.
-
 ## Customize
 
 Edit the `products` and `collections` arrays in `script.js` to change names, prices, categories, images, and descriptions.
